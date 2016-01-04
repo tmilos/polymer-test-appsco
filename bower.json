@@ -1,0 +1,33 @@
+{
+  "name": "test-polymer",
+  "authors": [
+    "Milos Tomic <tmilos@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.2.0",
+    "paper-elements": "PolymerElements/paper-elements#~1.0.7",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.1.4",
+    "sprintf": "~1.0.3",
+    "urijs": "~1.17.0",
+    "iron-label": "PolymerElements/iron-label#~1.0.1",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.1.1",
+    "TemplateBinding": "Polymer/TemplateBinding#~0.5.6"
+  },
+  "resolutions": {
+    "polymer": "^1.2.0",
+    "webcomponentsjs": "^0.7.2"
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "name": "social",
+    "description": "Social",
+    "version": "0.1.0",
+    "main": "index.html",
+    "window": {
+        "toolbar": true,
+        "width": 660,
+        "height": 500
+    },
+    "scripts": {
+        "start": "nw ."
+    }
+}

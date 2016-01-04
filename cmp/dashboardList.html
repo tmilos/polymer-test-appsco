@@ -1,0 +1,60 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+
+<dom-module id="dashboard-list">
+    <template>
+        <style>
+            paper-card a {
+                text-decoration: none;
+                height: 135px;
+                display: block;
+            }
+            paper-card a:hover div {
+                font-weight: bold;
+            }
+            paper-card a:hover img {
+                opacity: 0.5;
+            }
+        </style>
+        <div class="row">
+            <div class="col-md-2">
+                <paper-listbox id="listbox" selected="0">
+                    <template is="dom-repeat" items="{{ profile.dashboards }}">
+                        <paper-item on-click="handleClick" index="{{ index }}">{{ item.title }}</paper-item>
+                    </template>
+                </paper-listbox>
+            </div>
+            <div class="col-md-10" style="padding-top: 10px">
+                <template is="dom-repeat" id="icons">
+                    <paper-card style="width: 130px; height: 143px; font-size: 13px; text-align: center; float: left; margin-right: 20px">
+                        <a href="{{ item.url }}" target="_blank">
+                            <img src="{{ item.icon_url }}" style="max-width: 120px; height: 60px; margin: 25px 8px" />
+                            <div style="white-space: nowrap;">{{ item.title }}</div>
+                        </a>
+                    </paper-card>
+                </template>
+            </div>
+        </div>
+
+    </template>
+    <script>
+        var isLoaded = false;
+        Polymer({
+            is: 'dashboard-list',
+            properties: {
+                profile: Object,
+                notify: true
+            },
+
+            handleClick: function(e) {
+                this.$.icons.items = e.model.item.icons;
+            },
+
+            selectDashboard: function(index) {
+                this.$.listbox.getElementsByTagName('paper-item')[index].click();
+            }
+        });
+    </script>
+</dom-module>

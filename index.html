@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Polymer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import" href="cmp/mainApp.html">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <main-app id="root"></main-app>
+
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+
+<script src="bower_components/sprintf/dist/sprintf.min.js"></script>
+<script src="bower_components/urijs/src/URI.min.js"></script>
+
+<script>
+    App = {};
+</script>
+
+<script src="js/appsco.js"></script>
+
+<script>
+    document.addEventListener('WebComponentsReady', function() {
+
+        var root = document.getElementById('root');
+        App.Appsco.login(function(profile) {
+            root.set('profile', profile);
+            App.Appsco.listDashboards(function(dashboardList) {
+                root.set('profile.dashboards', dashboardList);
+                App.Appsco.loadIcons(profile, function(dashboardIndex, icons) {
+                    root.set('profile.dashboards.'+dashboardIndex+'.icons', icons);
+                    if (0 == dashboardIndex) {
+                        root.selectDashboard(0);
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
